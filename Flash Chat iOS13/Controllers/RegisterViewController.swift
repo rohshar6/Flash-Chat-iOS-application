@@ -30,8 +30,8 @@ class RegisterViewController: UIViewController {
                 self.present(self.alert, animated: true, completion: nil)
             } else {
                 // Navigation to chat VC
-                self.performSegue(withIdentifier: "RegisterToChat", sender: self)
+                self.performSegue(withIdentifier: Constants.registerSegue, sender: self)
             }
         }
-    }
+    } 
 }

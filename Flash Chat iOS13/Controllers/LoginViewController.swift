@@ -30,7 +30,7 @@ class LoginViewController: UIViewController {
                 strongSelf.alert.message = error.localizedDescription
                 strongSelf.present(strongSelf.alert, animated: true, completion: nil)
             } else {
-                strongSelf.performSegue(withIdentifier: "LoginToChat", sender: self)
+                strongSelf.performSegue(withIdentifier: Constants.loginSegue, sender: self)
             }
         }
     }
