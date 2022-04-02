@@ -16,6 +16,17 @@ class LoginViewController: UIViewController {
         return alert
     }()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Setup appearance
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = UIColor(named: Constants.BrandColors.blue)
+        setupNavigationAppearance(appearance)
+        
+        navigationItem.backBarButtonItem?.tintColor = .white
+    }
+    
     
     @IBAction func loginPressed(_ sender: UIButton) {
         let email = emailTextfield.text ?? ""

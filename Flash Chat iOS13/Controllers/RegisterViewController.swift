@@ -16,6 +16,17 @@ class RegisterViewController: UIViewController {
         return alert
     }()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Setup navigation-bar appearance
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = UIColor(named: Constants.BrandColors.blue)
+        setupNavigationAppearance(appearance)
+        
+        navigationItem.backBarButtonItem?.tintColor = .white
+    }
+    
     @IBAction func registerPressed(_ sender: UIButton) {
         let email = emailTextfield.text ?? ""
         let password = passwordTextfield.text ?? ""
@@ -23,7 +34,8 @@ class RegisterViewController: UIViewController {
     }
     
     private func handleAuthentication(with email: String, password: String) {
-        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+        Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
+            guard let self = self else { return }
             if let error = error {
                 print("error occured: \(error.localizedDescription)")
                 self.alert.message = error.localizedDescription
